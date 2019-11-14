@@ -1,0 +1,42 @@
+    <?xml version="1.0"?>
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="world_name" default="worlds/empty.world" />
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <!-- Add a single Warthog robot -->
+  <include file="$(find warthog_gazebo)/launch/warthog_sim.launch">
+  </include>
+
+    <node pkg="aruco_ros" type="double" name="aruco_simple">    
+        <remap from="/camera_info" to="/firefly/mav/camera1/camera_info" />
+        <remap from="/image" to="/firefly/mav/camera1/image_rect_color" />
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size" value="$(arg markerSize)"/>
+        <param name="marker_id1" value="$(arg marker1Id)"/>
+        <param name="marker_id2" value="$(arg marker2Id)"/>
+        <param name="marker_id3" value="$(arg marker3Id)"/>
+        <param name="marker_id4" value="$(arg marker4Id)"/>
+        <param name="marker_id5" value="$(arg marker5Id)"/>
+        <param name="normalizeImage" value="$(arg dct_normalization)"/>
+        <param name="dct_components_to_remove" value="$(arg dct_filter_size)"/>
+        <param name="parent_name" value="base_link"/>
+        <param name="child_name1" value="$(arg marker1_frame)" />
+        <param name="child_name2" value="$(arg marker2_frame)" />
+        <param name="child_name3" value="$(arg marker3_frame)" />
+        <param name="child_name4" value="$(arg marker4_frame)" />
+        <param name="child_name5" value="$(arg marker5_frame)" />
+    </node>
+
+  <node pkg="image_proc" type="image_proc" name="image_proc" ns="/firefly/mav/camera1"/>
+</launch>

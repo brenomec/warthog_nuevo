@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/aluno/warthog_ws/devel/include/**",
+        "/home/aluno/catkin_ws/devel/include/**",
+        "/opt/ros/kinetic/include/**",
+        "/home/aluno/catkin_ws/src/husky/husky_base/include/**",
+        "/home/aluno/warthog_ws/src/robot_localization/include/**",
+        "/home/aluno/warthog_ws/src/twist_mux/include/**",
+        "/home/aluno/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/home/aluno/warthog_ws/src/warthog_desafio/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

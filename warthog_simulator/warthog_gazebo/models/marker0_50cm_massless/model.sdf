@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name='marker0_50cm_massless'>
+    <static>1</static>
+    <link name="marker0">
+      <gravity>false</gravity>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <!--<size>0.7 0.7 0.001</size>-->
+            <size>1 1 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+      <uri>model://marker0_50cm_massless/materials/scripts</uri>
+      <uri>model://marker0_50cm_massless/materials/textures</uri>
+            <name>Aruco/marker0_50cm</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <!--<size>0.7 0.7 0.001</size>-->
+            <size>1 1 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
